@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Branding Mastery — SBJ Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--teal:#36C9C2;--teal-dim:rgba(54,201,194,0.13);--teal-border:rgba(54,201,194,0.25);--navy:#14142E}
+[data-theme="dark"]{--bg:#0E0E1F;--surface:#1A1A30;--surface2:#20203A;--border:rgba(54,201,194,0.18);--border-soft:rgba(255,255,255,0.06);--text:#FFFFFF;--text-body:#B8C4C3;--muted:#7A8A89;--hero-glow:rgba(54,201,194,0.07);--grid-line:rgba(54,201,194,0.04);--callout-bg:rgba(54,201,194,0.06);--callout-border:rgba(54,201,194,0.22);--example-bg:#1A1A30;--toggle-bg:#20203A;--footer-bg:#0A0A1A;--footer-border:rgba(54,201,194,0.15);--progress-bg:#20203A;--correct:#1a3a2a;--correct-border:#36C96A;--wrong:#3a1a1a;--wrong-border:#C93636}
+[data-theme="light"]{--bg:#F5F9F9;--surface:#FFFFFF;--surface2:#EBF5F5;--border:rgba(54,201,194,0.22);--border-soft:rgba(20,20,46,0.08);--text:#14142E;--text-body:#2E3E3D;--muted:#6A7A79;--hero-glow:rgba(54,201,194,0.09);--grid-line:rgba(54,201,194,0.05);--callout-bg:rgba(54,201,194,0.08);--callout-border:rgba(54,201,194,0.3);--example-bg:#EFF8F8;--toggle-bg:#DFF0F0;--footer-bg:#E5F2F2;--footer-border:rgba(54,201,194,0.2);--progress-bg:#DFF0F0;--correct:#e6f9ee;--correct-border:#36C96A;--wrong:#fdecea;--wrong-border:#C93636}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.7;transition:background .25s,color .25s}
+
+/* TOPBAR */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:.6rem 2rem;border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:0;z-index:200;transition:background .25s}
+.topbar-brand{display:flex;align-items:center;gap:10px}
+.topbar-logo{height:36px;width:auto}
+.topbar-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-left:10px;border-left:1px solid var(--border);margin-left:2px}
+.topbar-right{display:flex;align-items:center;gap:10px}
+.theme-toggle{display:flex;align-items:center;background:var(--toggle-bg);border:1px solid var(--teal-border);border-radius:100px;padding:4px 5px;cursor:pointer;transition:all .2s}
+.toggle-option{width:26px;height:22px;border-radius:100px;display:flex;align-items:center;justify-content:center;font-size:12px;transition:all .2s;color:var(--muted)}
+[data-theme="dark"] .toggle-option.dark-opt{background:var(--teal-dim);color:var(--teal)}
+[data-theme="light"] .toggle-option.light-opt{background:var(--teal-dim);color:var(--teal)}
+
+/* OVERALL PROGRESS BAR */
+.overall-progress{padding:.5rem 2rem;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;transition:background .25s}
+.op-label{font-size:11px;color:var(--muted);white-space:nowrap;letter-spacing:.04em}
+.op-bar-wrap{flex:1;height:5px;background:var(--progress-bg);border-radius:100px;overflow:hidden}
+.op-bar{height:100%;background:var(--teal);border-radius:100px;transition:width .4s ease}
+.op-pct{font-size:11px;color:var(--teal);font-weight:500;min-width:32px;text-align:right}
+
+/* HERO */
+.hero{text-align:center;padding:2.5rem 2rem 2rem;border-bottom:1px solid var(--border);background:radial-gradient(ellipse 80% 60% at 50% 0%,var(--hero-glow) 0%,transparent 70%);position:relative;overflow:hidden;transition:background .25s}
+.hero::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,var(--grid-line) 39px,var(--grid-line) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,var(--grid-line) 39px,var(--grid-line) 40px);pointer-events:none}
+.hero-logo-wrap{display:flex;justify-content:center;margin-bottom:1rem}
+.hero-logo{height:60px;width:auto}
+.badge{display:inline-block;background:var(--teal-dim);border:1px solid var(--teal-border);color:var(--teal);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:1rem;font-weight:500}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:700;line-height:1.15;color:var(--text);margin-bottom:.6rem}
+.hero h1 span{color:var(--teal)}
+.hero p{color:var(--muted);font-size:14px;max-width:500px;margin:0 auto 1.5rem;font-weight:300}
+.hero-stats{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;color:var(--teal);display:block}
+.stat-label{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 230px)}
+
+/* SIDEBAR */
+.sidebar{border-right:1px solid var(--border);padding:1.2rem 0;position:sticky;top:100px;height:calc(100vh - 100px);overflow-y:auto;background:var(--bg);transition:background .25s}
+.sidebar::-webkit-scrollbar{width:3px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px}
+.sidebar-section{margin-bottom:.3rem}
+.sidebar-section-title{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);padding:.5rem 1.5rem .3rem;font-weight:500}
+.module-btn{display:flex;align-items:center;gap:8px;width:100%;background:none;border:none;padding:.5rem 1.5rem;cursor:pointer;color:var(--muted);font-size:12.5px;font-family:'DM Sans',sans-serif;text-align:left;transition:all .15s;border-left:2px solid transparent}
+.module-btn:hover{color:var(--text);background:var(--border-soft)}
+.module-btn.active{color:var(--teal);border-left-color:var(--teal);background:rgba(54,201,194,0.07);font-weight:500}
+.module-btn.completed{color:var(--text-body)}
+.module-btn.completed .mod-check{opacity:1}
+.module-num{font-size:10px;background:var(--surface2);color:var(--muted);width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:500}
+.module-btn.active .module-num{background:var(--teal-dim);color:var(--teal)}
+.mod-check{margin-left:auto;font-size:12px;opacity:0;color:var(--teal);transition:opacity .2s}
+
+/* CONTENT */
+.content{padding:2.2rem 2.8rem;max-width:820px}
+.module-header{margin-bottom:1.8rem;padding-bottom:1.4rem;border-bottom:1px solid var(--border)}
+.module-tag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:.4rem}
+.module-header h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,1.9rem);font-weight:600;color:var(--text);line-height:1.2;margin-bottom:.5rem}
+.module-header p{color:var(--muted);font-size:13.5px;font-weight:300}
+.module-meta{display:flex;gap:1.2rem;margin-top:.7rem;flex-wrap:wrap}
+.meta-item{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px}
+.meta-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);opacity:.7}
+
+.section{margin-bottom:2rem}
+.section h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:.7rem;display:flex;align-items:center;gap:8px}
+.section h3::after{content:'';flex:1;height:1px;background:var(--border)}
+.section p{color:var(--text-body);font-size:14px;line-height:1.8;margin-bottom:.8rem;font-weight:300}
+.section p strong{color:var(--text);font-weight:500}
+.callout{background:var(--callout-bg);border:1px solid var(--callout-border);border-left:3px solid var(--teal);border-radius:8px;padding:.9rem 1.1rem;margin:.9rem 0;font-size:13px;color:var(--text-body);font-weight:300}
+.callout strong{color:var(--teal);font-weight:500;display:block;margin-bottom:.3rem;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.example-box{background:var(--example-bg);border:1px solid var(--border-soft);border-radius:10px;padding:1.1rem 1.4rem;margin:.9rem 0}
+.example-box .example-label{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:500;margin-bottom:.4rem}
+.example-box p{font-size:13px;margin-bottom:.4rem}
+.example-box p:last-child{margin-bottom:0}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.9rem;margin:.9rem 0}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.1rem}
+.card h4{font-size:13px;font-weight:500;color:var(--text);margin-bottom:.3rem}
+.card p{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:0}
+.step-list{list-style:none;margin:.7rem 0}
+.step-list li{display:flex;gap:12px;align-items:flex-start;padding:.5rem 0;border-bottom:1px solid var(--border-soft);font-size:13.5px;color:var(--text-body);font-weight:300}
+.step-list li:last-child{border-bottom:none}
+.step-list li strong{color:var(--text);font-weight:500}
+.step-num{font-family:'Playfair Display',serif;font-size:15px;color:var(--teal);font-weight:600;min-width:20px;line-height:1.5}
+.terms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.7rem;margin:.9rem 0}
+.term{background:var(--surface2);border:1px solid var(--border-soft);border-radius:8px;padding:.8rem .9rem}
+.term-name{font-size:12px;font-weight:500;color:var(--teal);margin-bottom:.25rem;letter-spacing:.02em}
+.term-def{font-size:12px;color:var(--muted);line-height:1.6}
+.quote-block{border-left:3px solid var(--teal);padding:.7rem 1.1rem;margin:.9rem 0;font-style:italic;color:var(--text-body);font-size:14px;font-family:'Playfair Display',serif}
+.quote-block cite{display:block;font-style:normal;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--muted);margin-top:.3rem;letter-spacing:.04em}
+.comp-table{width:100%;border-collapse:collapse;margin:.9rem 0;font-size:13px}
+.comp-table th{background:var(--surface2);color:var(--text);font-weight:500;padding:7px 11px;text-align:left;border-bottom:1px solid var(--border);font-size:11.5px}
+.comp-table td{padding:7px 11px;border-bottom:1px solid var(--border-soft);color:var(--text-body);vertical-align:top}
+.comp-table tr:last-child td{border-bottom:none}
+.comp-table td:first-child{color:var(--text)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:.7rem 0}
+.tag{background:var(--teal-dim);border:1px solid var(--teal-border);color:var(--teal);font-size:11px;padding:3px 10px;border-radius:100px;font-weight:400}
+
+/* DOWNLOAD RESOURCE BAR */
+.resource-bar{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;margin:1.5rem 0;gap:12px;flex-wrap:wrap}
+.resource-info{display:flex;align-items:center;gap:10px}
+.resource-icon{width:36px;height:36px;background:var(--teal-dim);border:1px solid var(--teal-border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.resource-text{}
+.resource-title{font-size:13px;font-weight:500;color:var(--text)}
+.resource-sub{font-size:11px;color:var(--muted);margin-top:2px}
+.dl-btn{background:var(--teal);color:#0E0E1F;border:none;padding:.5rem 1.1rem;border-radius:8px;font-size:12px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;transition:opacity .2s}
+.dl-btn:hover{opacity:.85}
+
+/* QUIZ */
+.quiz-section{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin:2rem 0}
+.quiz-header{display:flex;align-items:center;gap:10px;margin-bottom:1.2rem}
+.quiz-icon{width:34px;height:34px;background:var(--teal-dim);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.quiz-title{font-size:14px;font-weight:500;color:var(--text)}
+.quiz-sub{font-size:12px;color:var(--muted);margin-top:1px}
+.quiz-q{margin-bottom:1.2rem}
+.quiz-q-text{font-size:14px;font-weight:500;color:var(--text);margin-bottom:.7rem;line-height:1.5}
+.quiz-q-num{font-size:10px;color:var(--teal);text-transform:uppercase;letter-spacing:.08em;font-weight:500;margin-bottom:.3rem}
+.quiz-options{display:flex;flex-direction:column;gap:.5rem}
+.quiz-opt{display:flex;align-items:flex-start;gap:10px;padding:.65rem .9rem;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all .15s;background:none;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text-body);text-align:left;width:100%}
+.quiz-opt:hover{border-color:var(--teal);color:var(--text);background:var(--teal-dim)}
+.quiz-opt.selected{border-color:var(--teal);background:var(--teal-dim);color:var(--text)}
+.quiz-opt.correct{background:var(--correct);border-color:var(--correct-border);color:var(--text)}
+.quiz-opt.wrong{background:var(--wrong);border-color:var(--wrong-border);color:var(--text)}
+.quiz-opt.reveal-correct{background:var(--correct);border-color:var(--correct-border);color:var(--text)}
+.opt-letter{width:22px;height:22px;border-radius:50%;background:var(--surface2);color:var(--muted);font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.quiz-opt.selected .opt-letter{background:rgba(54,201,194,.25);color:var(--teal)}
+.quiz-opt.correct .opt-letter,.quiz-opt.reveal-correct .opt-letter{background:rgba(54,201,106,.25);color:#36C96A}
+.quiz-opt.wrong .opt-letter{background:rgba(201,54,54,.25);color:#C93636}
+.quiz-feedback{font-size:13px;margin-top:.5rem;padding:.5rem .8rem;border-radius:6px;display:none}
+.quiz-feedback.show{display:block}
+.quiz-feedback.right{background:var(--correct);color:#36C96A;border:1px solid var(--correct-border)}
+.quiz-feedback.wrong{background:var(--wrong);color:#C93636;border:1px solid var(--wrong-border)}
+.quiz-submit-row{display:flex;align-items:center;justify-content:space-between;margin-top:1.2rem;flex-wrap:wrap;gap:.7rem}
+.quiz-btn{background:var(--teal);color:#0E0E1F;border:none;padding:.6rem 1.4rem;border-radius:8px;font-size:13px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;transition:opacity .2s}
+.quiz-btn:hover{opacity:.85}
+.quiz-btn:disabled{opacity:.4;cursor:default}
+.quiz-score{font-size:13px;color:var(--muted);display:none}
+.quiz-score.show{display:block}
+.quiz-result{text-align:center;padding:1.2rem;display:none}
+.quiz-result.show{display:block}
+.quiz-result-icon{font-size:2.5rem;margin-bottom:.5rem}
+.quiz-result-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;color:var(--text);margin-bottom:.3rem}
+.quiz-result-sub{font-size:13px;color:var(--muted)}
+.quiz-result-score{font-size:2rem;font-weight:600;color:var(--teal);font-family:'Playfair Display',serif;margin:.5rem 0}
+.retake-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:.5rem 1.1rem;border-radius:8px;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .15s}
+.retake-btn:hover{border-color:var(--teal);color:var(--teal)}
+
+/* COMPLETE BUTTON */
+.complete-row{display:flex;align-items:center;gap:12px;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);flex-wrap:wrap}
+.complete-btn{background:var(--teal);color:#0E0E1F;border:none;padding:.65rem 1.4rem;border-radius:8px;font-size:13px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;transition:opacity .2s;display:flex;align-items:center;gap:6px}
+.complete-btn:hover{opacity:.85}
+.complete-btn.done{background:var(--surface2);color:var(--text-body);cursor:default;opacity:1}
+.complete-hint{font-size:12px;color:var(--muted)}
+
+/* MODULE NAV */
+.module-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem;padding-top:1.4rem;border-top:1px solid var(--border)}
+.nav-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:.55rem 1.1rem;border-radius:8px;cursor:pointer;font-size:12.5px;font-family:'DM Sans',sans-serif;transition:all .15s}
+.nav-btn:hover{border-color:var(--teal);color:var(--teal)}
+.nav-btn:disabled{opacity:.3;cursor:default}
+.progress-info{font-size:12px;color:var(--muted)}
+
+/* CERTIFICATE MODAL */
+.cert-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;display:none;align-items:center;justify-content:center;padding:1rem}
+.cert-overlay.show{display:flex}
+.cert-modal{background:var(--bg);border:1px solid var(--border);border-radius:16px;width:100%;max-width:640px;max-height:90vh;overflow-y:auto}
+.cert-modal-head{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 1.5rem;border-bottom:1px solid var(--border)}
+.cert-modal-title{font-size:14px;font-weight:500;color:var(--text)}
+.cert-close{background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;line-height:1;padding:2px 6px}
+.cert-modal-body{padding:1.5rem}
+.cert-name-input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.7rem 1rem;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;margin:.5rem 0 1rem;outline:none}
+.cert-name-input:focus{border-color:var(--teal)}
+.cert-label{font-size:12px;color:var(--muted);font-weight:400}
+.cert-preview{border:2px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:1.2rem;background:#14142E}
+.cert-actions{display:flex;gap:.7rem;flex-wrap:wrap}
+.cert-dl-btn{background:var(--teal);color:#0E0E1F;border:none;padding:.6rem 1.3rem;border-radius:8px;font-size:13px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;transition:opacity .2s;flex:1}
+.cert-dl-btn:hover{opacity:.85}
+
+/* FOOTER */
+.footer{background:var(--footer-bg);border-top:1px solid var(--footer-border);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-left{display:flex;align-items:center;gap:12px}
+.footer-logo-img{height:40px;width:auto}
+.footer-title{font-size:13px;font-weight:500;color:var(--text)}
+.footer-title span{color:var(--teal)}
+.footer-sub{font-size:11px;color:var(--muted);margin-top:2px}
+.footer-divider{width:1px;height:30px;background:var(--border);flex-shrink:0}
+.footer-right{font-size:12px;color:var(--muted);text-align:right}
+.footer-right strong{color:var(--text);font-weight:500}
+
+@media(max-width:680px){.layout{grid-template-columns:1fr}.sidebar{display:none}.content{padding:1.4rem 1rem}.topbar{padding:.6rem 1rem}.footer{flex-direction:column;padding:1.2rem}.footer-right{text-align:left}}
+</style>
+</head>
+<body>
+
+<!-- CERT MODAL -->
+<div class="cert-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="cert-modal-head">
+      <div class="cert-modal-title">🎓 Generate Your Certificate</div>
+      <button class="cert-close" onclick="closeCert()">×</button>
+    </div>
+    <div class="cert-modal-body">
+      <div class="cert-label">Enter your full name as it should appear on the certificate</div>
+      <input class="cert-name-input" id="certNameInput" type="text" placeholder="e.g. Amina Okafor" oninput="updateCertPreview()">
+      <div class="cert-preview">
+        <canvas id="certCanvas" width="600" height="420" style="width:100%;display:block"></canvas>
+      </div>
+      <div class="cert-actions">
+        <button class="cert-dl-btn" onclick="downloadCert()">⬇ Download Certificate (PNG)</button>
+        <button class="cert-dl-btn" style="background:var(--surface2);color:var(--text-body)" onclick="closeCert()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-brand">
+    <img class="topbar-logo" id="topbarLogo" src="/mnt/user-data/uploads/Asset_4ews.png" alt="SBJ Academy">
+    <span class="topbar-label">Branding Mastery Course</span>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <div class="toggle-option dark-opt">🌙</div>
+      <div class="toggle-option light-opt">☀️</div>
+    </button>
+  </div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="overall-progress">
+  <div class="op-label">Course Progress</div>
+  <div class="op-bar-wrap"><div class="op-bar" id="opBar" style="width:0%"></div></div>
+  <div class="op-pct" id="opPct">0%</div>
+  <button id="certBtn" onclick="openCert()" style="display:none;background:var(--teal);color:#0E0E1F;border:none;padding:.35rem .9rem;border-radius:6px;font-size:11.5px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap">🎓 Get Certificate</button>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-logo-wrap"><img class="hero-logo" id="heroLogo" src="/mnt/user-data/uploads/Asset_4ews.png" alt="SBJ Academy"></div>
+  <div class="badge">Complete Professional Course</div>
+  <h1>The Art &amp; Science of<br><span>Brand Building</span></h1>
+  <p>A comprehensive curriculum covering every dimension of branding — from strategy to execution, identity to culture.</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">10</span><span class="stat-label">Modules</span></div>
+    <div class="stat"><span class="stat-num">60+</span><span class="stat-label">Lessons</span></div>
+    <div class="stat"><span class="stat-num">40+</span><span class="stat-label">Quiz Questions</span></div>
+    <div class="stat"><span class="stat-num">1</span><span class="stat-label">Certificate</span></div>
+  </div>
+</div>
+
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Foundation</div>
+      <button class="module-btn active" id="mbtn0" onclick="showModule(0)"><span class="module-num">1</span>What is a Brand?<span class="mod-check" id="chk0">✓</span></button>
+      <button class="module-btn" id="mbtn1" onclick="showModule(1)"><span class="module-num">2</span>Brand Strategy<span class="mod-check" id="chk1">✓</span></button>
+      <button class="module-btn" id="mbtn2" onclick="showModule(2)"><span class="module-num">3</span>Brand Positioning<span class="mod-check" id="chk2">✓</span></button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Identity</div>
+      <button class="module-btn" id="mbtn3" onclick="showModule(3)"><span class="module-num">4</span>Visual Identity<span class="mod-check" id="chk3">✓</span></button>
+      <button class="module-btn" id="mbtn4" onclick="showModule(4)"><span class="module-num">5</span>Brand Voice &amp; Tone<span class="mod-check" id="chk4">✓</span></button>
+      <button class="module-btn" id="mbtn5" onclick="showModule(5)"><span class="module-num">6</span>Storytelling &amp; Narrative<span class="mod-check" id="chk5">✓</span></button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Growth</div>
+      <button class="module-btn" id="mbtn6" onclick="showModule(6)"><span class="module-num">7</span>Brand Experience<span class="mod-check" id="chk6">✓</span></button>
+      <button class="module-btn" id="mbtn7" onclick="showModule(7)"><span class="module-num">8</span>Brand Architecture<span class="mod-check" id="chk7">✓</span></button>
+      <button class="module-btn" id="mbtn8" onclick="showModule(8)"><span class="module-num">9</span>Rebranding &amp; Evolution<span class="mod-check" id="chk8">✓</span></button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Mastery</div>
+      <button class="module-btn" id="mbtn9" onclick="showModule(9)"><span class="module-num">10</span>Measuring Brand Equity<span class="mod-check" id="chk9">✓</span></button>
+    </div>
+  </nav>
+  <main class="content" id="mainContent"></main>
+</div>
+
+<footer class="footer">
+  <div class="footer-left">
+    <img class="footer-logo-img" id="footerLogo" src="/mnt/user-data/uploads/Asset_4ews.png" alt="SBJ Academy">
+    <div>
+      <div class="footer-title"><span>SBJ</span> Academy</div>
+      <div class="footer-sub">Professional Brand Education</div>
+    </div>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-right"><strong>Branding Mastery Course</strong><br>Curriculum owned by SBJ Academy · All rights reserved</div>
+</footer>
+
+<script>
+const LOGO_DARK='/mnt/user-data/uploads/Asset_4ews.png', LOGO_LIGHT='/mnt/user-data/uploads/Asset_3shd.png';
+function swapLogos(t){const s=t==='dark'?LOGO_DARK:LOGO_LIGHT;['topbarLogo','heroLogo','footerLogo'].forEach(id=>{const el=document.getElementById(id);if(el)el.src=s})}
+function toggleTheme(){const h=document.documentElement,n=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',n);swapLogos(n)}
+
+// STATE
+const completed=new Array(10).fill(false);
+const quizState=Array.from({length:10},()=>({answers:{},submitted:false,score:0}));
+
+function updateProgress(){
+  const n=completed.filter(Boolean).length;
+  const pct=Math.round(n/10*100);
+  document.getElementById('opBar').style.width=pct+'%';
+  document.getElementById('opPct').textContent=pct+'%';
+  const cb=document.getElementById('certBtn');
+  if(n===10){cb.style.display='block'}else{cb.style.display='none'}
+}
+
+// QUIZ DATA
+const quizzes=[
+  {title:"Module 1 Quiz — What is a Brand?",questions:[
+    {q:"A brand ultimately lives in:",opts:["The company's design system","The minds of customers","The CEO's vision document","The marketing budget"],correct:1},
+    {q:"Which is NOT one of the three layers of a brand?",opts:["Identity Layer","Experience Layer","Perception Layer","Revenue Layer"],correct:3},
+    {q:"Brand equity is best described as:",opts:["The cost of your logo design","Commercial value derived from customer perception","The total revenue of the company","Your social media following"],correct:1},
+    {q:"What does 'brand touchpoint' mean?",opts:["A physical store location","Any interaction between customer and brand","The brand's color palette","A marketing campaign"],correct:1}
+  ]},
+  {title:"Module 2 Quiz — Brand Strategy",questions:[
+    {q:"What is a brand's PURPOSE?",opts:["Its annual revenue target","The reason it exists beyond making money","Its product range","Its advertising budget"],correct:1},
+    {q:"Psychographics refers to:",opts:["Age and income demographics","Values, beliefs and lifestyle motivations","Geographic location data","Website traffic statistics"],correct:1},
+    {q:"In Simon Sinek's Golden Circle, which layer comes first?",opts:["What","How","Why","Who"],correct:2},
+    {q:"Brand PERSONALITY defines:",opts:["The company's org structure","Human character traits the brand embodies","The product features","The pricing strategy"],correct:1}
+  ]},
+  {title:"Module 3 Quiz — Brand Positioning",questions:[
+    {q:"According to Ries & Trout, the battlefield of positioning is:",opts:["The marketplace","Social media","The human mind","The retail shelf"],correct:2},
+    {q:"Volvo has consistently positioned around:",opts:["Speed","Luxury","Safety","Affordability"],correct:2},
+    {q:"Points of Parity are:",opts:["Your unique advantages","Features necessary to compete but not unique","Your brand's weaknesses","Competitor strengths"],correct:1},
+    {q:"A positioning statement is primarily:",opts:["An advertising tagline","An internal strategic tool","A legal document","A product description"],correct:1}
+  ]},
+  {title:"Module 4 Quiz — Visual Identity",questions:[
+    {q:"Which logo type uses only the brand's initials?",opts:["Wordmark","Combination Mark","Lettermark","Symbol"],correct:2},
+    {q:"Blue is most commonly associated with:",opts:["Energy and passion","Trust and reliability","Nature and growth","Luxury and mystery"],correct:1},
+    {q:"A great logo should be:",opts:["Complex and detailed","Simple enough to draw from memory","Trend-led and fashionable","As colorful as possible"],correct:1},
+    {q:"Brand guidelines exist to:",opts:["Limit creative freedom forever","Ensure consistent application of visual identity","Impress investors","Replace the brand strategy"],correct:1}
+  ]},
+  {title:"Module 5 Quiz — Brand Voice & Tone",questions:[
+    {q:"Brand VOICE is:",opts:["Different in every communication","Consistent personality across all contexts","Only used in advertising","The same as brand tone"],correct:1},
+    {q:"Brand TONE differs from brand voice in that it:",opts:["Never changes","Adapts to different situations and contexts","Applies only to social media","Is defined by the logo"],correct:1},
+    {q:"In a crisis communication, the appropriate tone adjustment is:",opts:["More promotional and sales-focused","More direct, empathetic, less promotional","More playful and humorous","More technical and detailed"],correct:1},
+    {q:"A brand vocabulary document helps to:",opts:["Replace the brand strategy","Create consistency in word choice across a team","Design the logo","Set advertising budgets"],correct:1}
+  ]},
+  {title:"Module 6 Quiz — Brand Storytelling",questions:[
+    {q:"In a brand narrative using the Hero's Journey, who is the hero?",opts:["The founder","The brand itself","The customer","The product"],correct:2},
+    {q:"What role does the brand play in the Hero's Journey model?",opts:["The villain","The hero","The mentor/guide","The bystander"],correct:2},
+    {q:"Authentic brand stories must be:",opts:["Polished and perfect","Rooted in truth and consistent with behavior","Always positive","Written by an agency"],correct:1},
+    {q:"Which storytelling format is typically the most emotionally powerful?",opts:["Email newsletters","Podcast episodes","Video / Film","Press releases"],correct:2}
+  ]},
+  {title:"Module 7 Quiz — Brand Experience",questions:[
+    {q:"Which phase of the customer journey is most often underrated?",opts:["Awareness","Purchase","Onboarding","Advocacy"],correct:2},
+    {q:"Zappos built its brand primarily through:",opts:["Television advertising","Customer service as the brand touchpoint","Celebrity endorsements","Product innovation"],correct:1},
+    {q:"Sensory branding that uses scent is particularly powerful because:",opts:["It is the cheapest option","Smell is the most emotionally immediate sense","It is easiest to control","It works best online"],correct:1},
+    {q:"A customer journey map is used to:",opts:["Design the company logo","Reveal gaps and friction in the brand experience","Set the advertising budget","Write brand guidelines"],correct:1}
+  ]},
+  {title:"Module 8 Quiz — Brand Architecture",questions:[
+    {q:"In a 'Branded House' model, the master brand:",opts:["Is invisible to consumers","Covers all products and services","Has no connection to sub-brands","Is only used internally"],correct:1},
+    {q:"P&G (Tide, Pampers, Gillette) is an example of:",opts:["Branded House","Endorsed Brand","House of Brands","Monolithic Brand"],correct:2},
+    {q:"A brand stretch is most dangerous when:",opts:["Entering a new country","Extending outside the brand's perceived expertise","Adding a new color to the palette","Hiring a new marketing team"],correct:1},
+    {q:"'Courtyard by Marriott' is an example of:",opts:["House of Brands","Branded House","Endorsed Brand","Line Extension"],correct:2}
+  ]},
+  {title:"Module 9 Quiz — Rebranding",questions:[
+    {q:"Which of these is NOT a legitimate trigger for a full rebrand?",opts:["Merger or acquisition","The CEO wants a new color","Severe reputation damage","A fundamental category pivot"],correct:1},
+    {q:"The Old Spice rebrand succeeded primarily by:",opts:["Lowering prices significantly","Leaning into humor and self-awareness","Sponsoring major sporting events","Changing the product formula"],correct:1},
+    {q:"What should happen BEFORE any creative rebrand work begins?",opts:["Designing the new logo","A strategic audit and customer research","Announcing the rebrand publicly","Hiring a new agency"],correct:1},
+    {q:"The Gap logo redesign failure taught us that:",opts:["Logos should never change","Audiences will defend brand equity taken for granted","Design agencies are unreliable","Rebranding is always a mistake"],correct:1}
+  ]},
+  {title:"Module 10 Quiz — Measuring Brand Equity",questions:[
+    {q:"In Keller's CBBE model, 'Resonance' represents:",opts:["Basic brand awareness","The highest level — loyalty, attachment, community","Product quality ratings","Financial brand value"],correct:1},
+    {q:"Price premium is significant because it:",opts:["Shows how much the brand spends on marketing","Directly expresses brand equity's financial value","Measures social media reach","Tracks customer complaints"],correct:1},
+    {q:"Net Promoter Score measures:",opts:["Website traffic","The likelihood customers would recommend the brand","Annual revenue growth","Employee satisfaction"],correct:1},
+    {q:"Why is brand measurement critical to brand investment?",opts:["It replaces the need for strategy","What cannot be measured cannot be defended in a budget meeting","It guarantees brand success","It eliminates the need for advertising"],correct:1}
+  ]}
+];
+
+// RESOURCES DATA
+const resources=[
+  {title:"Module 1 — Brand Foundations Workbook",sub:"PDF · 4 pages · Exercises & key concepts"},
+  {title:"Module 2 — Brand Strategy Template",sub:"PDF · 2 pages · Fill-in-the-blank brand platform"},
+  {title:"Module 3 — Positioning Statement Worksheet",sub:"PDF · 2 pages · Template + examples"},
+  {title:"Module 4 — Visual Identity Checklist",sub:"PDF · 3 pages · Logo, color & typography audit"},
+  {title:"Module 5 — Brand Voice Guide Template",sub:"PDF · 3 pages · Voice traits + tone examples"},
+  {title:"Module 6 — Hero's Journey Story Map",sub:"PDF · 2 pages · Brand narrative framework"},
+  {title:"Module 7 — Customer Journey Map Template",sub:"PDF · 4 pages · All 7 stages mapped"},
+  {title:"Module 8 — Brand Architecture Decision Tree",sub:"PDF · 2 pages · Model selection guide"},
+  {title:"Module 9 — Rebrand Strategy Brief",sub:"PDF · 3 pages · Rebrand planning framework"},
+  {title:"Module 10 — Brand Equity Scorecard",sub:"PDF · 2 pages · Metrics tracker template"}
+];
+
+// MODULE CONTENT
+const moduleContent=[
+  {tag:"Module 1 · Foundation",title:"What is a Brand?",subtitle:"Understand the true nature of branding — beyond logos and colors — and why it is one of the most powerful business assets in existence.",duration:"45 min",lessons:"6 lessons",body:`
+    <div class="section"><h3>The Common Misconception</h3>
+      <p>Most people think a brand is a logo. Or a color palette. But mistaking these elements for the brand itself is like mistaking a person's clothing for their character. <strong>A brand is a perception</strong> — the set of thoughts, feelings, and expectations that form in a person's mind when they encounter your company.</p>
+      <div class="callout"><strong>Core Definition</strong>A brand is not what you say it is. It is what they say it is. Every brand ultimately lives in the minds of customers — not in brand books or boardrooms.</div>
+    </div>
+    <div class="section"><h3>The Three Layers of a Brand</h3>
+      <div class="card-grid">
+        <div class="card"><h4>Identity Layer</h4><p>What you put out — name, logo, colors, voice. The controlled signals you broadcast.</p></div>
+        <div class="card"><h4>Experience Layer</h4><p>What people encounter — products, services, support. Every touchpoint is a brand moment.</p></div>
+        <div class="card"><h4>Perception Layer</h4><p>What people believe — reputation, associations, emotional resonance. The brand as it truly exists.</p></div>
+      </div>
+    </div>
+    <div class="section"><h3>Why Branding Matters</h3>
+      <p>Strong brands command pricing power, create resilience in crises, and build customer loyalty that no product feature can replicate. Trust, built through consistent branding over time, is one of the only sustainable competitive advantages in modern business.</p>
+      <div class="example-box"><div class="example-label">Case Study — Apple</div><p>Apple's products are rarely the cheapest or most technically superior. Yet they command the highest prices and deepest loyalty. The difference is 40 years of accumulated brand perception: creativity, simplicity, design excellence.</p></div>
+    </div>
+    <div class="section"><h3>Key Concepts</h3>
+      <div class="terms-grid">
+        <div class="term"><div class="term-name">Brand Equity</div><div class="term-def">Commercial value derived from customer perception, distinct from the product itself.</div></div>
+        <div class="term"><div class="term-name">Brand Image</div><div class="term-def">How customers actually perceive the brand — often different from intended identity.</div></div>
+        <div class="term"><div class="term-name">Brand Essence</div><div class="term-def">The core distilled truth of a brand, often captured in a single phrase.</div></div>
+        <div class="term"><div class="term-name">Brand Promise</div><div class="term-def">The commitment a brand makes about the experience it will consistently deliver.</div></div>
+      </div>
+    </div>
+    <div class="quote-block">"A product can be copied by a competitor; a brand is unique. A product can be quickly outdated; a successful brand is timeless."<cite>— Stephen King, JWT</cite></div>`},
+  {tag:"Module 2 · Foundation",title:"Brand Strategy",subtitle:"Build the strategic foundation that every branding decision rests upon — purpose, vision, mission, values, and audience.",duration:"55 min",lessons:"7 lessons",body:`
+    <div class="section"><h3>Strategy Before Aesthetics</h3>
+      <p>Every great brand begins with a strategy, not a logo. Strategy defines <strong>who you are, who you serve, what you stand for, and how you are different</strong>. Most branding failures are failures of strategy, not execution.</p>
+    </div>
+    <div class="section"><h3>The Five Strategic Pillars</h3>
+      <ul class="step-list">
+        <li><span class="step-num">1</span><div><strong>Purpose — Why do you exist beyond making money?</strong> Patagonia exists to save the planet. TED exists to spread ideas. Purpose gives moral direction and emotional resonance.</div></li>
+        <li><span class="step-num">2</span><div><strong>Vision — Where are you going?</strong> An aspirational image of the future. Internal-facing, motivating, long-term.</div></li>
+        <li><span class="step-num">3</span><div><strong>Mission — What do you do, for whom, and how?</strong> The operational expression of purpose. Concrete enough to drive real decisions.</div></li>
+        <li><span class="step-num">4</span><div><strong>Values — What principles guide your behavior?</strong> Most powerful when they involve genuine trade-offs and cost you something.</div></li>
+        <li><span class="step-num">5</span><div><strong>Personality — If your brand were a person, who would they be?</strong> Character traits shaping tone, design, and relationships.</div></li>
+      </ul>
+    </div>
+    <div class="section"><h3>Understanding Your Audience</h3>
+      <div class="card-grid">
+        <div class="card"><h4>Demographics</h4><p>Age, income, location. The surface layer — necessary but not sufficient.</p></div>
+        <div class="card"><h4>Psychographics</h4><p>Values, beliefs, aspirations. The deeper layer that actually drives behavior.</p></div>
+        <div class="card"><h4>Jobs-to-be-Done</h4><p>What "job" is the customer hiring your brand to do? The most strategic lens.</p></div>
+      </div>
+      <div class="callout"><strong>The Insight</strong>People don't buy brands. They buy better versions of themselves. Brand strategy is the art of becoming the vehicle for someone's self-expression.</div>
+    </div>`},
+  {tag:"Module 3 · Foundation",title:"Brand Positioning",subtitle:"Occupy a clear, distinct, and valuable place in your customer's mind — and defend it over time.",duration:"50 min",lessons:"6 lessons",body:`
+    <div class="section"><h3>What Positioning Really Means</h3>
+      <p>Positioning defines how a brand occupies a distinct place in the mind of the target customer relative to competitors. <strong>The battlefield is not the marketplace — it is the human mind.</strong></p>
+      <div class="quote-block">"Positioning is not what you do to a product. Positioning is what you do to the mind of the prospect."<cite>— Al Ries &amp; Jack Trout</cite></div>
+    </div>
+    <div class="section"><h3>Positioning Strategies</h3>
+      <ul class="step-list">
+        <li><span class="step-num">1</span><div><strong>Against a Competitor</strong> — Avis: "We're number two. We try harder." Works when you can credibly claim superiority on a key dimension.</div></li>
+        <li><span class="step-num">2</span><div><strong>By Category Ownership</strong> — FedEx owned "overnight delivery" so completely it became a verb.</div></li>
+        <li><span class="step-num">3</span><div><strong>By Attribute</strong> — Volvo owns "safety." BMW owns "driving pleasure." Requires decades of consistency.</div></li>
+        <li><span class="step-num">4</span><div><strong>By Price/Quality</strong> — Rolex owns premium. IKEA owns affordable. Never try to own both simultaneously.</div></li>
+        <li><span class="step-num">5</span><div><strong>By User</strong> — "For serious athletes." "For creative professionals." Works when the user type is aspirational.</div></li>
+      </ul>
+    </div>
+    <div class="section"><h3>The Positioning Statement</h3>
+      <div class="example-box"><div class="example-label">Template</div><p><strong>For</strong> [target audience], <strong>[Brand]</strong> is the <strong>[category]</strong> that <strong>[point of difference]</strong> because <strong>[reason to believe]</strong>.</p></div>
+      <div class="example-box"><div class="example-label">Early Amazon Example</div><p>For internet users who love books, Amazon is the online retailer that gives access to more books than any store in the world at consistently low prices, because we have built the world's largest online book inventory backed by efficient logistics.</p></div>
+    </div>`},
+  {tag:"Module 4 · Identity",title:"Visual Identity",subtitle:"Design the tangible expression of your brand — the visual system that signals who you are before a single word is read.",duration:"60 min",lessons:"8 lessons",body:`
+    <div class="section"><h3>The Visual Identity System</h3>
+      <p>Visual identity is the system of elements that consistently represents a brand — logo, color palette, typography, imagery style, and layout principles. Grounded in strategy, it works 24/7 without words.</p>
+    </div>
+    <div class="section"><h3>Logo Types</h3>
+      <div class="card-grid">
+        <div class="card"><h4>Wordmark</h4><p>Brand name in a distinctive typeface. Google, Coca-Cola, FedEx.</p></div>
+        <div class="card"><h4>Lettermark</h4><p>Initials only — IBM, HBO, NASA. Works when the full name is long.</p></div>
+        <div class="card"><h4>Symbol / Icon</h4><p>Abstract or representational mark. Apple's apple, Nike's swoosh.</p></div>
+        <div class="card"><h4>Combination Mark</h4><p>Symbol plus wordmark. Most versatile — elements can separate at scale.</p></div>
+      </div>
+      <div class="callout"><strong>Logo Design Principle</strong>A logo should be simple enough to draw from memory. If it requires detailed illustration to communicate, it will fail at small sizes and in uncontrolled contexts.</div>
+    </div>
+    <div class="section"><h3>Color Psychology</h3>
+      <table class="comp-table">
+        <thead><tr><th>Color</th><th>Associations</th><th>Examples</th></tr></thead>
+        <tbody>
+          <tr><td>Blue</td><td>Trust, reliability, professionalism</td><td>IBM, Visa, Ford</td></tr>
+          <tr><td>Red</td><td>Energy, passion, urgency</td><td>Coca-Cola, Netflix, YouTube</td></tr>
+          <tr><td>Green</td><td>Nature, health, sustainability</td><td>Whole Foods, Starbucks</td></tr>
+          <tr><td>Black</td><td>Luxury, sophistication, power</td><td>Chanel, Apple, Nike</td></tr>
+          <tr><td>Teal/Cyan</td><td>Innovation, clarity, modernity</td><td>Robinhood, SBJ Academy</td></tr>
+        </tbody>
+      </table>
+    </div>`},
+  {tag:"Module 5 · Identity",title:"Brand Voice & Tone",subtitle:"Develop the verbal identity of your brand — the distinctive way it speaks and communicates across every channel.",duration:"45 min",lessons:"6 lessons",body:`
+    <div class="section"><h3>Voice vs. Tone</h3>
+      <p><strong>Brand voice</strong> is the consistent personality of communication — constant across all contexts. <strong>Brand tone</strong> adapts to different situations, just as a person can be themselves but speak differently in different settings.</p>
+    </div>
+    <div class="section"><h3>The Voice Spectrum</h3>
+      <div class="terms-grid">
+        <div class="term"><div class="term-name">Formal ↔ Casual</div><div class="term-def">How structured vs. relaxed is your language?</div></div>
+        <div class="term"><div class="term-name">Serious ↔ Playful</div><div class="term-def">How earnest vs. light and humorous?</div></div>
+        <div class="term"><div class="term-name">Authoritative ↔ Humble</div><div class="term-def">How assertive vs. deferential?</div></div>
+        <div class="term"><div class="term-name">Simple ↔ Complex</div><div class="term-def">How accessible vs. technical?</div></div>
+        <div class="term"><div class="term-name">Warm ↔ Distant</div><div class="term-def">How intimate vs. professional?</div></div>
+        <div class="term"><div class="term-name">Edgy ↔ Safe</div><div class="term-def">How provocative vs. conventional?</div></div>
+      </div>
+    </div>
+    <div class="section"><h3>Tone Adaptation</h3>
+      <table class="comp-table">
+        <thead><tr><th>Context</th><th>Tone Adjustment</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Error messages</td><td>More apologetic, clearer, practical</td><td>User is frustrated — clarity is kindness</td></tr>
+          <tr><td>Celebration</td><td>More enthusiastic, warmer</td><td>Match the emotional moment</td></tr>
+          <tr><td>Social media</td><td>More casual, immediate, human</td><td>Conversation not broadcast</td></tr>
+          <tr><td>Crisis</td><td>More direct, empathetic</td><td>Trust is at stake</td></tr>
+        </tbody>
+      </table>
+    </div>`},
+  {tag:"Module 6 · Identity",title:"Brand Storytelling & Narrative",subtitle:"Use the ancient power of story to create emotional connection and give your brand meaning beyond its product.",duration:"50 min",lessons:"6 lessons",body:`
+    <div class="section"><h3>Why Humans Run on Stories</h3>
+      <p>Facts tell us what happened. Stories tell us what it means. When we hear a story, our brain simulates the experience — heart rate changes, neural regions activate. This is why brand stories create emotional connection that feature lists never can.</p>
+    </div>
+    <div class="section"><h3>The Hero's Journey</h3>
+      <div class="callout"><strong>Critical Insight</strong>The customer is always the hero. The brand is the mentor — the guide who helps the hero succeed. Most brands make themselves the hero. This is the least compelling narrative possible.</div>
+      <ul class="step-list">
+        <li><span class="step-num">1</span><div><strong>The Ordinary World</strong> — Customer's life before your brand. Their normal, unsatisfying state.</div></li>
+        <li><span class="step-num">2</span><div><strong>The Call to Adventure</strong> — The problem or desire creating need for your brand.</div></li>
+        <li><span class="step-num">3</span><div><strong>Meeting the Mentor</strong> — Your brand enters their life. You offer understanding and a path forward.</div></li>
+        <li><span class="step-num">4</span><div><strong>The Transformation</strong> — The customer changes, grows, achieves. This is the core promise.</div></li>
+        <li><span class="step-num">5</span><div><strong>The Return</strong> — They carry success forward and become advocates.</div></li>
+      </ul>
+    </div>
+    <div class="section"><h3>Story Types</h3>
+      <div class="card-grid">
+        <div class="card"><h4>Founder Story</h4><p>The origin — the problem faced, the insight had, the sacrifice made. Humanizes the brand.</p></div>
+        <div class="card"><h4>Customer Story</h4><p>Transformation — before and after. The most powerful sales narrative.</p></div>
+        <div class="card"><h4>Mission Story</h4><p>The larger change being pursued in the world. Bigger than any transaction.</p></div>
+      </div>
+    </div>`},
+  {tag:"Module 7 · Growth",title:"Brand Experience",subtitle:"Design every touchpoint to deliver a consistent, memorable, and emotionally resonant brand experience.",duration:"55 min",lessons:"7 lessons",body:`
+    <div class="section"><h3>The Experience IS the Brand</h3>
+      <p>Every interaction a customer has with your company is the brand. Strategy and identity are inputs. Experience is the output that matters.</p>
+      <div class="quote-block">"Your brand is what other people say about you when you're not in the room."<cite>— Jeff Bezos</cite></div>
+    </div>
+    <div class="section"><h3>Customer Journey Mapping</h3>
+      <ul class="step-list">
+        <li><span class="step-num">1</span><div><strong>Awareness</strong> — First encounter. What impression is created?</div></li>
+        <li><span class="step-num">2</span><div><strong>Consideration</strong> — Research and evaluation. What shapes the decision?</div></li>
+        <li><span class="step-num">3</span><div><strong>Purchase</strong> — The transaction itself. Is it aligned with brand values?</div></li>
+        <li><span class="step-num">4</span><div><strong>Onboarding</strong> — First use. The most underrated phase.</div></li>
+        <li><span class="step-num">5</span><div><strong>Ongoing Use</strong> — Day-to-day experience and habit formation.</div></li>
+        <li><span class="step-num">6</span><div><strong>Support &amp; Recovery</strong> — How a brand behaves in failure defines its character.</div></li>
+        <li><span class="step-num">7</span><div><strong>Advocacy</strong> — The customer becomes a promoter. The earned marketing channel.</div></li>
+      </ul>
+    </div>
+    <div class="section"><h3>Sensory Branding</h3>
+      <div class="card-grid">
+        <div class="card"><h4>Sound</h4><p>Sonic logos, brand music. Intel's 4-note jingle is worth billions in recognition.</p></div>
+        <div class="card"><h4>Smell</h4><p>Scent marketing. The most emotionally immediate of all the senses.</p></div>
+        <div class="card"><h4>Touch</h4><p>Material quality, packaging weight. Apple's packaging slow-open was engineered.</p></div>
+        <div class="card"><h4>Taste</h4><p>For food brands, flavor consistency IS the brand.</p></div>
+      </div>
+    </div>`},
+  {tag:"Module 8 · Growth",title:"Brand Architecture",subtitle:"Organize multiple brands, sub-brands, and product lines into a coherent, strategic structure.",duration:"45 min",lessons:"5 lessons",body:`
+    <div class="section"><h3>What Is Brand Architecture?</h3>
+      <p>Brand architecture defines the relationship between a parent brand and its sub-brands. The wrong architecture can dilute equity, confuse customers, and waste investment. The right one maximizes transfer of brand value while protecting each entity.</p>
+    </div>
+    <div class="section"><h3>The Three Core Models</h3>
+      <ul class="step-list">
+        <li><span class="step-num">1</span><div><strong>Branded House (Monolithic)</strong> — One master brand covers everything. Virgin, Apple, Google. Investment benefits the whole portfolio. Risk: one failure can damage all products.</div></li>
+        <li><span class="step-num">2</span><div><strong>House of Brands (Freestanding)</strong> — Parent invisible; each brand stands independently. P&amp;G (Tide, Pampers, Gillette), LVMH. Each brand optimally positioned. Risk: high investment required per brand.</div></li>
+        <li><span class="step-num">3</span><div><strong>Endorsed Brand</strong> — Sub-brands carry parent endorsement. "Courtyard by Marriott." Endorsement provides credibility; sub-brand provides specificity.</div></li>
+      </ul>
+    </div>
+    <div class="section"><h3>Key Decision Factors</h3>
+      <div class="terms-grid">
+        <div class="term"><div class="term-name">Audience Overlap</div><div class="term-def">High overlap favors a branded house; distinct audiences favor a house of brands.</div></div>
+        <div class="term"><div class="term-name">Price Tier Conflict</div><div class="term-def">Luxury brands cannot afford to share equity with mass-market products.</div></div>
+        <div class="term"><div class="term-name">Risk Containment</div><div class="term-def">Risky new ventures often warrant their own brand identity.</div></div>
+        <div class="term"><div class="term-name">Equity Transfer</div><div class="term-def">If the parent is strong and relevant, leverage it. If irrelevant, create distance.</div></div>
+      </div>
+    </div>`},
+  {tag:"Module 9 · Growth",title:"Rebranding & Brand Evolution",subtitle:"Navigate the high-stakes process of changing a brand — knowing when to evolve, when to rebrand, and how to execute without destroying what you've built.",duration:"50 min",lessons:"6 lessons",body:`
+    <div class="section"><h3>Evolution vs. Rebranding</h3>
+      <p><strong>Brand evolution</strong> is gradual, incremental change maintaining continuity. <strong>Rebranding</strong> is a fundamental repositioning or identity change. Most brands need the former regularly and the latter rarely. Rebranding is expensive, risky, and disruptive.</p>
+    </div>
+    <div class="section"><h3>When to Rebrand</h3>
+      <div class="card-grid">
+        <div class="card"><h4>Merger / Acquisition</h4><p>A new brand represents the combined entity without favoring either legacy.</p></div>
+        <div class="card"><h4>Category Pivot</h4><p>Entering a market where the existing brand carries wrong associations.</p></div>
+        <div class="card"><h4>Reputation Damage</h4><p>Deeply negative associations that cannot be overcome. The name is a liability.</p></div>
+        <div class="card"><h4>Audience Shift</h4><p>Reaching a demographic the existing brand alienates or fails to attract.</p></div>
+      </div>
+    </div>
+    <div class="section"><h3>Case Studies</h3>
+      <div class="example-box"><div class="example-label">Success — Old Spice (2010)</div><p>Repositioned from "brand for old men" to irreverent and desirable using absurdist humor. Sales doubled in a year.</p></div>
+      <div class="example-box"><div class="example-label">Failure — Gap Logo (2010)</div><p>Replaced iconic blue box with a generic wordmark. Public backlash reversed the change within one week. Audiences defend brand equity you take for granted.</p></div>
+      <div class="example-box"><div class="example-label">Evolution — Google to Alphabet (2015)</div><p>Created Alphabet as parent to give each moonshot independence while preserving Google for core products.</p></div>
+    </div>`},
+  {tag:"Module 10 · Mastery",title:"Measuring Brand Equity",subtitle:"Quantify the intangible — measure brand health, track equity over time, and make the business case for brand investment.",duration:"45 min",lessons:"6 lessons",body:`
+    <div class="section"><h3>The Measurement Challenge</h3>
+      <p>Brand equity is one of the most valuable assets a company can possess — and one of the most difficult to measure. This is the primary reason brand investment is chronically underfunded. What cannot be measured cannot be defended in a budget meeting.</p>
+    </div>
+    <div class="section"><h3>Keller's CBBE Model</h3>
+      <ul class="step-list">
+        <li><span class="step-num">1</span><div><strong>Identity (Salience)</strong> — Who are you? Brand awareness — the depth and breadth of recall in relevant situations.</div></li>
+        <li><span class="step-num">2</span><div><strong>Meaning (Performance + Imagery)</strong> — What are you? Functional performance meets customer needs; imagery meets psychological needs.</div></li>
+        <li><span class="step-num">3</span><div><strong>Response (Judgments + Feelings)</strong> — What do I think/feel? Rational quality judgments plus emotional responses.</div></li>
+        <li><span class="step-num">4</span><div><strong>Resonance</strong> — What connection do I have? The highest level — loyalty, attachment, community, active engagement.</div></li>
+      </ul>
+    </div>
+    <div class="section"><h3>Key Brand Metrics</h3>
+      <div class="terms-grid">
+        <div class="term"><div class="term-name">Brand Awareness</div><div class="term-def">Unaided recall and aided recognition. Foundation of all other metrics.</div></div>
+        <div class="term"><div class="term-name">Net Promoter Score</div><div class="term-def">Likelihood of recommending the brand (0–10). Promoters minus Detractors.</div></div>
+        <div class="term"><div class="term-name">Price Premium</div><div class="term-def">Percentage above category average price customers will pay. The most direct financial expression of brand equity.</div></div>
+        <div class="term"><div class="term-name">Share of Voice</div><div class="term-def">Brand's percentage of total category conversation vs. competitors.</div></div>
+      </div>
+    </div>
+    <div class="section"><h3>Course Complete</h3>
+      <p>You have now covered the full spectrum of brand thinking. Branding is a practice, not a subject. The concepts only become real when applied and refined through actual work.</p>
+      <div class="tags"><span class="tag">Brand Auditing</span><span class="tag">Consumer Research</span><span class="tag">Creative Direction</span><span class="tag">Strategic Planning</span><span class="tag">Campaign Development</span><span class="tag">Brand Management</span></div>
+      <div class="callout"><strong>Recommended Reading</strong>"Building Strong Brands" by David Aaker · "Positioning" by Ries &amp; Trout · "This Is Marketing" by Seth Godin · "The Brand Gap" by Marty Neumeier</div>
+    </div>`}
+];
+
+let current=0;
+
+function renderQuiz(idx){
+  const qz=quizzes[idx], st=quizState[idx];
+  if(st.submitted){
+    return`<div class="quiz-section"><div class="quiz-header"><div class="quiz-icon">✅</div><div><div class="quiz-title">${qz.title}</div><div class="quiz-sub">Quiz completed — Score: ${st.score}/${qz.questions.length}</div></div></div>
+    <div class="quiz-result show"><div class="quiz-result-icon">${st.score===qz.questions.length?'🏆':st.score>=qz.questions.length*0.75?'🎉':'📚'}</div>
+    <div class="quiz-result-title">${st.score===qz.questions.length?'Perfect Score!':st.score>=qz.questions.length*0.75?'Well Done!':'Keep Studying'}</div>
+    <div class="quiz-result-score">${st.score} / ${qz.questions.length}</div>
+    <div class="quiz-result-sub">${st.score===qz.questions.length?'Outstanding! You mastered this module.':st.score>=qz.questions.length*0.75?'Great work — you have a strong grasp of this module.':'Review the module content and try again.'}</div>
+    <br><button class="retake-btn" onclick="retakeQuiz(${idx})">↺ Retake Quiz</button></div></div>`;
+  }
+  let html=`<div class="quiz-section"><div class="quiz-header"><div class="quiz-icon">🧠</div><div><div class="quiz-title">${qz.title}</div><div class="quiz-sub">${qz.questions.length} questions · Select the best answer</div></div></div>`;
+  qz.questions.forEach((q,qi)=>{
+    const sel=st.answers[qi];
+    html+=`<div class="quiz-q"><div class="quiz-q-num">Question ${qi+1} of ${qz.questions.length}</div><div class="quiz-q-text">${q.q}</div><div class="quiz-options">`;
+    q.opts.forEach((o,oi)=>{
+      const ltr=String.fromCharCode(65+oi);
+      const isSel=sel===oi;
+      html+=`<button class="quiz-opt${isSel?' selected':''}" onclick="selectAnswer(${idx},${qi},${oi})"><span class="opt-letter">${ltr}</span>${o}</button>`;
+    });
+    html+=`</div></div>`;
+  });
+  const answered=Object.keys(st.answers).length;
+  html+=`<div class="quiz-submit-row"><button class="quiz-btn" onclick="submitQuiz(${idx})" ${answered<qz.questions.length?'disabled':''}>Submit Quiz →</button>
+  <span class="quiz-score">${answered} of ${qz.questions.length} answered</span></div></div>`;
+  return html;
+}
+
+function selectAnswer(modIdx,qIdx,optIdx){
+  if(quizState[modIdx].submitted)return;
+  quizState[modIdx].answers[qIdx]=optIdx;
+  showModule(modIdx,true);
+}
+
+function submitQuiz(modIdx){
+  const qz=quizzes[modIdx],st=quizState[modIdx];
+  let score=0;
+  qz.questions.forEach((q,qi)=>{if(st.answers[qi]===q.correct)score++});
+  st.score=score;st.submitted=true;
+  showModule(modIdx,true);
+}
+
+function retakeQuiz(modIdx){
+  quizState[modIdx]={answers:{},submitted:false,score:0};
+  showModule(modIdx,true);
+}
+
+function markComplete(idx){
+  completed[idx]=true;
+  document.getElementById('chk'+idx).style.opacity='1';
+  document.getElementById('mbtn'+idx).classList.add('completed');
+  updateProgress();
+  showModule(idx,true);
+}
+
+function generateResource(idx){
+  const r=resources[idx];
+  const content=`SBJ ACADEMY — BRANDING MASTERY COURSE\n${'='.repeat(50)}\n${r.title}\n${'='.repeat(50)}\n\nThis resource is part of the SBJ Academy Branding Mastery Course.\n\nModule: ${moduleContent[idx].tag}\nTopic: ${moduleContent[idx].title}\n\n${'-'.repeat(50)}\nKEY CONCEPTS\n${'-'.repeat(50)}\n\nThis downloadable resource provides a structured framework for applying the concepts covered in ${moduleContent[idx].title}.\n\nUse this worksheet alongside the module content to:\n• Reinforce your understanding of key concepts\n• Apply frameworks to your own brand or project\n• Document your strategic decisions\n• Build a real, usable brand asset\n\n${'-'.repeat(50)}\nEXERCISE PROMPTS\n${'-'.repeat(50)}\n\n1. _______________________________________________\n   _______________________________________________\n\n2. _______________________________________________\n   _______________________________________________\n\n3. _______________________________________________\n   _______________________________________________\n\n4. _______________________________________________\n   _______________________________________________\n\n${'-'.repeat(50)}\nNOTES\n${'-'.repeat(50)}\n\n___________________________________________________\n___________________________________________________\n___________________________________________________\n___________________________________________________\n___________________________________________________\n\n\n© SBJ Academy — All Rights Reserved\nBranding Mastery Course`;
+  const blob=new Blob([content],{type:'text/plain'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=`SBJ_Academy_Module${idx+1}_Resource.txt`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function showModule(idx, preserveScroll=false){
+  current=idx;
+  const m=moduleContent[idx];
+  document.querySelectorAll('.module-btn').forEach((b,i)=>b.classList.toggle('active',i===idx));
+  const isComplete=completed[idx];
+  const html=`
+    <div class="module-header">
+      <div class="module-tag">${m.tag}</div>
+      <h2>${m.title}</h2>
+      <p>${m.subtitle}</p>
+      <div class="module-meta">
+        <div class="meta-item"><span class="meta-dot"></span>${m.duration} read</div>
+        <div class="meta-item"><span class="meta-dot"></span>${m.lessons}</div>
+        ${isComplete?'<div class="meta-item" style="color:var(--teal)"><span style="background:var(--teal-dim);border-radius:50%;width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;font-size:9px;margin-right:2px">✓</span>Completed</div>':''}
+      </div>
+    </div>
+    ${m.body}
+    <div class="resource-bar">
+      <div class="resource-info">
+        <div class="resource-icon">📄</div>
+        <div class="resource-text">
+          <div class="resource-title">${resources[idx].title}</div>
+          <div class="resource-sub">${resources[idx].sub}</div>
+        </div>
+      </div>
+      <button class="dl-btn" onclick="generateResource(${idx})">⬇ Download</button>
+    </div>
+    ${renderQuiz(idx)}
+    <div class="complete-row">
+      <button class="complete-btn ${isComplete?'done':''}" onclick="${isComplete?'':` markComplete(${idx})`}">
+        ${isComplete?'✓ Module Completed':'Mark as Complete'}
+      </button>
+      <span class="complete-hint">${isComplete?'Great work! Move to the next module.':'Complete this module to track your progress.'}</span>
+    </div>
+    <div class="module-nav">
+      <button class="nav-btn" onclick="showModule(${idx-1})" ${idx===0?'disabled':''}>← Previous</button>
+      <span class="progress-info">Module ${idx+1} of 10</span>
+      <button class="nav-btn" onclick="showModule(${idx+1})" ${idx===9?'disabled':''}>Next →</button>
+    </div>`;
+  document.getElementById('mainContent').innerHTML=html;
+  if(!preserveScroll)window.scrollTo(0,0);
+}
+
+// CERTIFICATE
+function openCert(){
+  document.getElementById('certOverlay').classList.add('show');
+  setTimeout(()=>updateCertPreview(),100);
+}
+function closeCert(){document.getElementById('certOverlay').classList.remove('show')}
+
+function updateCertPreview(){
+  const name=document.getElementById('certNameInput').value.trim()||'Your Name';
+  drawCert(name);
+}
+
+function drawCert(name){
+  const canvas=document.getElementById('certCanvas');
+  const ctx=canvas.getContext('2d');
+  const W=600,H=420;
+  canvas.width=W;canvas.height=H;
+
+  // Background
+  ctx.fillStyle='#14142E';
+  ctx.fillRect(0,0,W,H);
+
+  // Border decoration
+  ctx.strokeStyle='#36C9C2';ctx.lineWidth=2;
+  ctx.strokeRect(16,16,W-32,H-32);
+  ctx.strokeStyle='rgba(54,201,194,0.25)';ctx.lineWidth=1;
+  ctx.strokeRect(22,22,W-44,H-44);
+
+  // Corner accents
+  const corners=[[16,16],[W-16,16],[16,H-16],[W-16,H-16]];
+  corners.forEach(([cx,cy])=>{
+    ctx.fillStyle='#36C9C2';
+    ctx.beginPath();ctx.arc(cx,cy,4,0,Math.PI*2);ctx.fill();
+  });
+
+  // Header teal band
+  ctx.fillStyle='rgba(54,201,194,0.08)';
+  ctx.fillRect(22,22,W-44,60);
+
+  // SBJ ACADEMY text
+  ctx.fillStyle='#36C9C2';
+  ctx.font='bold 13px DM Sans, sans-serif';
+  ctx.textAlign='center';
+  ctx.letterSpacing='0.15em';
+  ctx.fillText('SBJ ACADEMY', W/2, 58);
+
+  // Certificate of Completion
+  ctx.fillStyle='rgba(255,255,255,0.5)';
+  ctx.font='11px DM Sans, sans-serif';
+  ctx.fillText('CERTIFICATE OF COMPLETION', W/2, 100);
+
+  // Decorative line
+  ctx.strokeStyle='rgba(54,201,194,0.3)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(60,112);ctx.lineTo(W-60,112);ctx.stroke();
+
+  // "This certifies that"
+  ctx.fillStyle='rgba(255,255,255,0.55)';
+  ctx.font='13px DM Sans, sans-serif';
+  ctx.fillText('This certifies that', W/2, 142);
+
+  // Name
+  ctx.fillStyle='#FFFFFF';
+  ctx.font='bold 30px Playfair Display, serif';
+  ctx.fillText(name, W/2, 188);
+
+  // Underline name
+  const nw=ctx.measureText(name).width;
+  ctx.strokeStyle='rgba(54,201,194,0.5)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(W/2-nw/2,196);ctx.lineTo(W/2+nw/2,196);ctx.stroke();
+
+  // Completion text
+  ctx.fillStyle='rgba(255,255,255,0.5)';
+  ctx.font='13px DM Sans, sans-serif';
+  ctx.fillText('has successfully completed', W/2, 222);
+
+  // Course name
+  ctx.fillStyle='#36C9C2';
+  ctx.font='bold 18px Playfair Display, serif';
+  ctx.fillText('The Art & Science of Brand Building', W/2, 254);
+
+  ctx.fillStyle='rgba(255,255,255,0.4)';
+  ctx.font='12px DM Sans, sans-serif';
+  ctx.fillText('Branding Mastery Course · 10 Modules · SBJ Academy', W/2, 278);
+
+  // Divider
+  ctx.strokeStyle='rgba(54,201,194,0.2)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(60,298);ctx.lineTo(W-60,298);ctx.stroke();
+
+  // Date and credential
+  const now=new Date();
+  const dateStr=now.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  ctx.fillStyle='rgba(255,255,255,0.35)';
+  ctx.font='11px DM Sans, sans-serif';
+  ctx.textAlign='left';ctx.fillText('Date of Issue: '+dateStr, 60, 326);
+  ctx.textAlign='right';ctx.fillText('Credential: BM-'+Math.random().toString(36).substr(2,8).toUpperCase(), W-60, 326);
+
+  // Signature line
+  ctx.strokeStyle='rgba(54,201,194,0.25)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(60,370);ctx.lineTo(200,370);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(W-200,370);ctx.lineTo(W-60,370);ctx.stroke();
+
+  ctx.fillStyle='rgba(255,255,255,0.3)';
+  ctx.font='10px DM Sans, sans-serif';
+  ctx.textAlign='center';
+  ctx.fillText('Programme Director', 130, 385);
+  ctx.fillText('SBJ Academy', W-130, 385);
+
+  // Teal dot watermark
+  ctx.fillStyle='rgba(54,201,194,0.06)';
+  ctx.beginPath();ctx.arc(W/2,H/2,140,0,Math.PI*2);ctx.fill();
+}
+
+function downloadCert(){
+  const name=document.getElementById('certNameInput').value.trim()||'Graduate';
+  drawCert(name);
+  const canvas=document.getElementById('certCanvas');
+  const a=document.createElement('a');
+  a.download=`SBJ_Academy_Certificate_${name.replace(/\s+/g,'_')}.png`;
+  a.href=canvas.toDataURL('image/png');
+  a.click();
+}
+
+updateProgress();
+showModule(0);
+</script>
+</body>
+</html>
