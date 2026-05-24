@@ -1,0 +1,41 @@
+/* SBJ Academy — design tokens */
+:root {
+  --teal: #36C9C2;
+  --teal-dim: rgba(54, 201, 194, 0.12);
+  --teal-border: rgba(54, 201, 194, 0.25);
+  --navy: #14142E;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg: #0A0A18;
+  --surface: #12122A;
+  --surface2: #1A1A35;
+  --surface3: #222240;
+  --border: rgba(54, 201, 194, 0.15);
+  --border-soft: rgba(255, 255, 255, 0.05);
+  --text: #FFFFFF;
+  --text-body: #B0BEC0;
+  --muted: #5A6A72;
+  --glow: rgba(54, 201, 194, 0.06);
+  --grid: rgba(54, 201, 194, 0.035);
+  --toggle-bg: #1A1A35;
+  --footer-bg: #060610;
+}
+
+[data-theme="light"] {
+  --bg: #F4F8F8;
+  --surface: #FFFFFF;
+  --surface2: #EBF5F5;
+  --surface3: #DFF0F0;
+  --border: rgba(54, 201, 194, 0.2);
+  --border-soft: rgba(20, 20, 46, 0.07);
+  --text: #14142E;
+  --text-body: #2A3A3A;
+  --muted: #7A8A8A;
+  --glow: rgba(54, 201, 194, 0.07);
+  --grid: rgba(54, 201, 194, 0.04);
+  --toggle-bg: #DFF0F0;
+  --footer-bg: #E0EDED;
+}

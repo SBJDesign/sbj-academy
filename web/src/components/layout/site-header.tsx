@@ -1,0 +1,46 @@
+import Link from 'next/link';
+import { ThemeToggle } from './theme-toggle';
+
+export function SiteHeader({
+  active,
+}: {
+  active?: 'home' | 'courses';
+}) {
+  return (
+    <header className="site-nav sticky top-0 z-50 border-b border-border bg-bg/95 backdrop-blur">
+      <nav
+        className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6"
+        aria-label="Main"
+      >
+        <Link href="/" className="font-display text-lg font-bold text-teal">
+          SBJ <span className="text-foreground">Academy</span>
+        </Link>
+        <div className="flex items-center gap-3 sm:gap-4">
+          <Link
+            href="/"
+            className={`text-sm transition-colors ${
+              active === 'home' ? 'font-medium text-teal' : 'text-muted hover:text-teal'
+            }`}
+          >
+            Home
+          </Link>
+          <Link
+            href="/courses"
+            className={`text-sm transition-colors ${
+              active === 'courses' ? 'font-medium text-teal' : 'text-muted hover:text-teal'
+            }`}
+          >
+            Courses
+          </Link>
+          <ThemeToggle />
+          <Link
+            href="/courses"
+            className="hidden rounded-lg bg-teal px-3 py-1.5 text-sm font-medium text-navy sm:inline-block hover:opacity-90"
+          >
+            Browse Courses →
+          </Link>
+        </div>
+      </nav>
+    </header>
+  );
+}
