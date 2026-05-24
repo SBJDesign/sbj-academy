@@ -60,15 +60,21 @@ npm run extract-courses
 
 3. Rebuild: `npm run build`
 
-## Deploy
+## Deploy (Vercel)
 
-Build the `web` app and deploy to Vercel, Netlify, or any Node host:
+**Recommended:** In your Vercel project → **Settings** → **General** → **Root Directory**, set:
+
+```text
+web
+```
+
+Save, then **Redeploy**. Vercel will run `npm install` and `next build` inside `web/` automatically.
+
+If you keep the repository root as the Vercel root, `vercel.json` at the repo root installs and builds the `web` workspace instead (fixes `npm run build` exit code 127).
 
 ```bash
 cd web && npm run build && npm run start
 ```
-
-Or connect the `web` folder to Vercel with root directory set to `web`.
 
 ## Legacy static site
 
