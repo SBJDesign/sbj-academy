@@ -62,15 +62,18 @@ npm run extract-courses
 
 ## Deploy (Vercel)
 
-**Recommended:** In your Vercel project → **Settings** → **General** → **Root Directory**, set:
+The Next.js app lives in **`web/`**. Configure the Vercel project like this:
 
-```text
-web
-```
+1. **Settings** → **General** → **Root Directory** → `web` → Save  
+2. **Settings** → **General** → **Framework Preset** → **Next.js** (should auto-detect after step 1)  
+3. **Settings** → **General** → **Output Directory** → **clear any override** (remove `public` if it is set — that is for static sites, not Next.js)  
+4. **Build & Development Settings** → leave **Build Command** and **Install Command** at their defaults (`next build` / `npm install`)  
+5. **Deployments** → **Redeploy**
 
-Save, then **Redeploy**. Vercel will run `npm install` and `next build` inside `web/` automatically.
-
-If you keep the repository root as the Vercel root, `vercel.json` at the repo root installs and builds the `web` workspace instead (fixes `npm run build` exit code 127).
+| Symptom | Fix |
+|--------|-----|
+| `npm run build` exit **127** | Root Directory not `web`, or dependencies not installed in `web/` |
+| No Output Directory named **`public`** | Clear **Output Directory** override; use Framework **Next.js**, not “Other” |
 
 ```bash
 cd web && npm run build && npm run start
