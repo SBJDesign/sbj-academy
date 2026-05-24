@@ -10,6 +10,11 @@ export const certificateCourses: Record<string, CertificateCourseInfo> = {
     subtitle: 'Branding Mastery Course · 10 Modules',
     idPrefix: 'BM',
   },
+  'brand-analysis': {
+    titleLine: 'Brand Analysis — Position, Perception & Performance',
+    subtitle: 'Brand Analysis · 6 Modules',
+    idPrefix: 'BA',
+  },
   'business-communication': {
     titleLine: 'The Art of Professional Communication',
     subtitle: 'Business Communication · 15 Modules',

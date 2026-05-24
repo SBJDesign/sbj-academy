@@ -191,8 +191,78 @@ export const businessCommunicationGuides: ModuleGuide[] = [
   },
 ];
 
+export const brandAnalysisGuides: ModuleGuide[] = [
+  {
+    plainEnglish:
+      'Before you measure your brand, you need to write down what it is supposed to stand for — mission, values, personality, and who you serve.',
+    analogy:
+      'Like a doctor checking your medical history before running tests. Without a baseline of who you say you are, you cannot tell if the results are good or bad news.',
+    youWillLearn: [
+      'Define the three pillars: position, perception, and performance',
+      'Write a mission statement that goes beyond what you sell',
+      'Build a target audience profile deeper than demographics',
+    ],
+  },
+  {
+    plainEnglish:
+      'A brand identity audit checks whether every touchpoint — logo, colours, voice, website — looks and sounds like the same brand.',
+    analogy:
+      'Like meeting someone who dresses differently every day and tells a different story about themselves — you would not trust them. Brands need the same consistency.',
+    youWillLearn: [
+      'Audit visual identity across all channels',
+      'Define voice traits with "we are / we are not" pairs',
+      'Review digital presence from website to social to email',
+    ],
+  },
+  {
+    plainEnglish:
+      'Brand awareness measures how many people know you exist — through search volume, social mentions, surveys, and share of voice.',
+    analogy:
+      'Like counting how many people in a room raise their hand when your name is mentioned versus when they have to be reminded who you are.',
+    youWillLearn: [
+      'Track branded search volume in Google Search Console',
+      'Set up social listening for mentions and reach',
+      'Calculate share of voice vs. competitors',
+    ],
+  },
+  {
+    plainEnglish:
+      'Sentiment tells you not just how many people talk about you, but whether they feel good, neutral, or bad about your brand.',
+    analogy:
+      'Awareness is how loud the conversation is. Sentiment is whether people are cheering, shrugging, or booing.',
+    youWillLearn: [
+      'Classify mentions as positive, neutral, or negative',
+      'Respond to negative feedback quickly and systematically',
+      'Set up automated sentiment monitoring with alerts',
+    ],
+  },
+  {
+    plainEnglish:
+      'Competitive analysis puts your brand metrics in context — you cannot know if 1,000 mentions is strong until you compare it to rivals.',
+    analogy:
+      'Like checking your exam score only after seeing the class average. Your number means nothing in isolation.',
+    youWillLearn: [
+      'Categorise direct, indirect, and aspirational competitors',
+      'Build a positioning map to find white space',
+      'Run a brand-focused SWOT grounded in real data',
+    ],
+  },
+  {
+    plainEnglish:
+      'The final step is building a dashboard and review rhythm so analysis leads to decisions — not just reports sitting in a folder.',
+    analogy:
+      'Like a fitness tracker: the value is not the step count itself, but changing behaviour because you saw the data every week.',
+    youWillLearn: [
+      'Define brand health KPIs with target benchmarks',
+      'Set daily, weekly, monthly, and quarterly review cadences',
+      'Convert insights into owned actions with success metrics',
+    ],
+  },
+];
+
 export function getModuleGuides(slug: string): ModuleGuide[] | undefined {
   if (slug === 'branding') return brandingGuides;
+  if (slug === 'brand-analysis') return brandAnalysisGuides;
   if (slug === 'business-communication') return businessCommunicationGuides;
   return undefined;
 }

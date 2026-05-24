@@ -3,7 +3,11 @@ import { CoursePlayer } from '@/components/course/course-player';
 import { getCatalogItem, getCourse } from '@/lib/courses';
 
 export function generateStaticParams() {
-  return [{ slug: 'branding' }, { slug: 'business-communication' }];
+  return [
+    { slug: 'branding' },
+    { slug: 'brand-analysis' },
+    { slug: 'business-communication' },
+  ];
 }
 
 export async function generateMetadata({

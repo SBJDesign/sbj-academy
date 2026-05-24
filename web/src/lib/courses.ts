@@ -1,9 +1,11 @@
 import type { CourseCatalogItem, CourseData } from './types';
 import branding from '@/content/branding/course.json';
+import brandAnalysis from '@/content/brand-analysis/course.json';
 import businessCommunication from '@/content/business-communication/course.json';
 
 const coursesBySlug: Record<string, CourseData> = {
   branding: branding as CourseData,
+  'brand-analysis': brandAnalysis as CourseData,
   'business-communication': businessCommunication as CourseData,
 };
 
@@ -19,6 +21,19 @@ export const catalog: CourseCatalogItem[] = [
     worksheets: 10,
     duration: '5hrs',
     tags: ['Brand Strategy', 'Visual Identity', 'Positioning', 'Storytelling'],
+    available: true,
+  },
+  {
+    slug: 'brand-analysis',
+    title: 'Brand Analysis',
+    description:
+      'A complete step-by-step guide — position, perception, performance, competitive intelligence, and brand health monitoring.',
+    icon: '📊',
+    modules: 6,
+    quizCount: '24',
+    worksheets: 6,
+    duration: '5hrs',
+    tags: ['Brand Strategy', 'Competitive Intelligence', 'Brand Health', 'Sentiment'],
     available: true,
   },
   {
