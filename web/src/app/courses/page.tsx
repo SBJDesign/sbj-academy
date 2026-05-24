@@ -34,7 +34,7 @@ export default function CoursesPage() {
           {available.map((course) => (
             <article
               key={course.slug}
-              className="flex flex-col overflow-hidden rounded-2xl border border-border bg-surface transition hover:border-teal/30 hover:-translate-y-0.5"
+              className="card-elevated flex flex-col overflow-hidden"
             >
               <div className="flex-1 p-6">
                 <p className="text-[10px] uppercase tracking-widest text-teal">Live course</p>
@@ -75,7 +75,7 @@ export default function CoursesPage() {
               <div className="border-t border-border p-4">
                 <Link
                   href={`/learn/${course.slug}`}
-                  className="block w-full rounded-xl bg-teal py-2.5 text-center text-sm font-medium text-navy hover:opacity-90"
+                  className="btn-cta block w-full py-2.5 text-center text-sm"
                 >
                   Start course free →
                 </Link>

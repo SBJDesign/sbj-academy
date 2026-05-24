@@ -7,7 +7,7 @@ export function SiteHeader({
   active?: 'home' | 'courses';
 }) {
   return (
-    <header className="site-nav sticky top-0 z-50 border-b border-border bg-bg/95 backdrop-blur">
+    <header className="site-nav sticky top-0 z-50 border-b border-border bg-surface/90 backdrop-blur-md">
       <nav
         className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6"
         aria-label="Main"
@@ -35,7 +35,7 @@ export function SiteHeader({
           <ThemeToggle />
           <Link
             href="/courses"
-            className="hidden rounded-lg bg-teal px-3 py-1.5 text-sm font-medium text-navy sm:inline-block hover:opacity-90"
+            className="btn-cta hidden px-3 py-1.5 text-sm sm:inline-flex"
           >
             Browse Courses →
           </Link>

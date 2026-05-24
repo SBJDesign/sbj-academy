@@ -22,10 +22,10 @@ export default function HomePage() {
       <main>
         <section className="relative overflow-hidden border-b border-border px-4 py-20 text-center sm:px-6 sm:py-28">
           <div
-            className="pointer-events-none absolute inset-0 opacity-40"
+            className="pointer-events-none absolute inset-0 opacity-50"
             style={{
               background:
-                'radial-gradient(ellipse 70% 60% at 50% 30%, rgba(54,201,194,0.08), transparent 70%)',
+                'radial-gradient(ellipse 70% 60% at 50% 30%, rgba(54,201,194,0.12), transparent 70%)',
             }}
           />
           <div className="relative mx-auto max-w-3xl">
@@ -43,27 +43,24 @@ export default function HomePage() {
               built on a modern learning platform.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <Link
-                href="/learn/branding"
-                className="rounded-xl bg-teal px-6 py-3 text-sm font-medium text-navy hover:opacity-90"
-              >
+              <Link href="/learn/branding" className="btn-cta px-6 py-3 text-sm">
                 Start Branding Course →
               </Link>
-              <Link
-                href="/courses"
-                className="rounded-xl border border-border px-6 py-3 text-sm text-text-body hover:border-teal hover:text-teal"
-              >
+              <Link href="/courses" className="btn-outline px-6 py-3 text-sm">
                 Browse all courses
               </Link>
             </div>
-            <div className="mt-10 flex flex-wrap justify-center gap-8 border-t border-border pt-8">
+            <div className="mt-10 flex flex-wrap justify-center gap-6 border-t border-border pt-8 sm:gap-8">
               {[
                 ['10', 'Modules'],
                 ['40+', 'Quiz questions'],
-                ['2', 'Courses live'],
+                ['3', 'Courses live'],
                 ['Free', 'Forever'],
               ].map(([num, label]) => (
-                <div key={label}>
+                <div
+                  key={label}
+                  className="min-w-[88px] rounded-xl border border-border bg-surface px-5 py-3 shadow-sm"
+                >
                   <span className="font-display text-2xl font-semibold text-teal">{num}</span>
                   <p className="mt-1 text-[10px] uppercase tracking-wider text-muted">{label}</p>
                 </div>
@@ -79,10 +76,7 @@ export default function HomePage() {
           </h2>
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
             {curriculum.map((m) => (
-              <div
-                key={m.n}
-                className="rounded-xl border border-border bg-surface p-4 transition-colors hover:border-teal/30"
-              >
+              <div key={m.n} className="card-elevated p-4">
                 <span className="font-display text-2xl font-bold text-teal/30">{m.n}</span>
                 <p className="mt-1 font-medium">{m.title}</p>
                 <span className="mt-2 inline-block rounded-full border border-teal/25 bg-teal/10 px-2 py-0.5 text-[10px] text-teal">
@@ -106,10 +100,7 @@ export default function HomePage() {
             <p className="mt-3 text-text-body">
               Progress saves automatically in your browser. Pick a course and begin module 1.
             </p>
-            <Link
-              href="/courses"
-              className="mt-6 inline-block rounded-xl bg-teal px-8 py-3 font-medium text-navy hover:opacity-90"
-            >
+            <Link href="/courses" className="btn-cta mt-6 px-8 py-3 text-sm">
               View course catalogue
             </Link>
           </div>

@@ -9,7 +9,7 @@ export function SiteFooter() {
             SBJ <span className="text-foreground">Academy</span>
           </div>
           <p className="mt-1 text-sm text-muted">
-            Professional brand education · © SBJ Academy 2025
+            Professional brand education · © SBJ Academy {new Date().getFullYear()}
           </p>
         </div>
         <div className="flex flex-wrap gap-4 text-sm text-muted">
@@ -18,6 +18,9 @@ export function SiteFooter() {
           </Link>
           <Link href="/learn/branding" className="hover:text-teal">
             Branding
+          </Link>
+          <Link href="/learn/brand-analysis" className="hover:text-teal">
+            Brand Analysis
           </Link>
           <Link href="/learn/business-communication" className="hover:text-teal">
             Business Communication
