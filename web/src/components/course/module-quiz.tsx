@@ -30,7 +30,9 @@ export function ModuleQuizPanel({
         <div className="quiz-icon-box">🧠</div>
         <div>
           <div className="quiz-title">{quiz.title}</div>
-          <div className="quiz-sub-text">4 questions · Test your understanding</div>
+          <div className="quiz-sub-text">
+            {quiz.questions.length} questions · Test your understanding
+          </div>
         </div>
       </div>
 

@@ -53,7 +53,7 @@ export default function HomePage() {
             <div className="mt-10 flex flex-wrap justify-center gap-6 border-t border-border pt-8 sm:gap-8">
               {[
                 ['10', 'Modules'],
-                ['40+', 'Quiz questions'],
+                ['300+', 'Quiz questions'],
                 ['3', 'Courses live'],
                 ['Free', 'Forever'],
               ].map(([num, label]) => (
