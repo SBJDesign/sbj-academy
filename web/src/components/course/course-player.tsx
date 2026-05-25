@@ -13,6 +13,7 @@ import { getModuleGuides } from '@/lib/module-guides';
 import { CertificateModal } from './certificate-modal';
 import { ModuleGuidePanel } from './module-guide';
 import { ModuleQuizPanel } from './module-quiz';
+import { SiteLogo } from '@/components/layout/site-logo';
 import { ThemeToggle } from '@/components/layout/theme-toggle';
 
 function withCompletionMeta(
@@ -136,9 +137,7 @@ export function CoursePlayer({ course }: { course: CourseData }) {
     <div className="min-h-screen bg-bg text-foreground pb-20 lg:pb-0">
       <header className="sticky top-0 z-50 border-b border-border bg-bg/95 backdrop-blur">
         <div className="flex items-center justify-between px-4 py-2.5 sm:px-6">
-          <Link href="/" className="font-display text-lg font-bold text-teal">
-            SBJ <span className="text-foreground">Academy</span>
-          </Link>
+          <SiteLogo iconSize={32} />
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="/courses"

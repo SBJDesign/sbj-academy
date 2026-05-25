@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SiteLogo } from './site-logo';
 import { ThemeToggle } from './theme-toggle';
 
 export function SiteHeader({
@@ -12,9 +13,7 @@ export function SiteHeader({
         className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6"
         aria-label="Main"
       >
-        <Link href="/" className="font-display text-lg font-bold text-teal">
-          SBJ <span className="text-foreground">Academy</span>
-        </Link>
+        <SiteLogo />
         <div className="flex items-center gap-3 sm:gap-4">
           <Link
             href="/"

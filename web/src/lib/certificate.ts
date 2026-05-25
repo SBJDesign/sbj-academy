@@ -57,12 +57,11 @@ export function generateCertificateId(
 
 async function loadFonts() {
   await Promise.all([
-    document.fonts.load('48px "Great Vibes"'),
-    document.fonts.load('700 13px "DM Sans"'),
-    document.fonts.load('500 11px "DM Sans"'),
-    document.fonts.load('600 26px "Playfair Display"'),
-    document.fonts.load('italic 600 22px "Playfair Display"'),
-    document.fonts.load('700 18px "Playfair Display"'),
+    document.fonts.load('700 40px "Space Grotesk"'),
+    document.fonts.load('700 13px "Inter"'),
+    document.fonts.load('500 11px "Inter"'),
+    document.fonts.load('600 22px "Space Grotesk"'),
+    document.fonts.load('400 15px "Inter"'),
   ]);
 }
 
@@ -127,12 +126,12 @@ function drawHeader(ctx: CanvasRenderingContext2D) {
   ctx.fillRect(40, 40, W - 80, bandH);
 
   ctx.fillStyle = '#36c9c2';
-  ctx.font = '700 13px "DM Sans", sans-serif';
+  ctx.font = '700 13px "Inter", sans-serif';
   ctx.textAlign = 'center';
   ctx.fillText('SBJ ACADEMY', W / 2, 72);
 
   ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-  ctx.font = '500 11px "DM Sans", sans-serif';
+  ctx.font = '500 11px "Inter", sans-serif';
   ctx.fillText('C E R T I F I C A T E   O F   C O M P L E T I O N', W / 2, 98);
 
   ctx.strokeStyle = 'rgba(54, 201, 194, 0.35)';
@@ -156,10 +155,10 @@ function drawSeal(ctx: CanvasRenderingContext2D, cx: number, cy: number, r: numb
   ctx.stroke();
 
   ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
-  ctx.font = '700 11px "DM Sans", sans-serif';
+  ctx.font = '700 11px "Inter", sans-serif';
   ctx.textAlign = 'center';
   ctx.fillText('SBJ', cx, cy - 4);
-  ctx.font = '500 9px "DM Sans", sans-serif';
+  ctx.font = '500 9px "Inter", sans-serif';
   ctx.fillText('ACADEMY', cx, cy + 10);
 }
 
@@ -185,12 +184,12 @@ export async function renderCertificateCanvas(
   drawHeader(ctx);
 
   ctx.fillStyle = 'rgba(255, 255, 255, 0.55)';
-  ctx.font = '400 15px "DM Sans", sans-serif';
+  ctx.font = '400 15px "Inter", sans-serif';
   ctx.textAlign = 'center';
   ctx.fillText('This certifies that', W / 2, 155);
 
   ctx.fillStyle = '#ffffff';
-  ctx.font = '48px "Great Vibes", cursive';
+  ctx.font = '700 40px "Space Grotesk", sans-serif';
   ctx.fillText(opts.studentName, W / 2, 215);
 
   const nameW = ctx.measureText(opts.studentName).width;
@@ -207,15 +206,15 @@ export async function renderCertificateCanvas(
   ctx.stroke();
 
   ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-  ctx.font = '400 15px "DM Sans", sans-serif';
+  ctx.font = '400 15px "Inter", sans-serif';
   ctx.fillText('has successfully completed', W / 2, 268);
 
   ctx.fillStyle = '#36c9c2';
-  ctx.font = 'italic 600 22px "Playfair Display", serif';
+  ctx.font = '600 22px "Space Grotesk", sans-serif';
   ctx.fillText(opts.course.titleLine, W / 2, 310);
 
   ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-  ctx.font = '500 13px "DM Sans", sans-serif';
+  ctx.font = '500 13px "Inter", sans-serif';
   ctx.fillText(opts.course.subtitle, W / 2, 338);
 
   ctx.strokeStyle = 'rgba(54, 201, 194, 0.2)';
@@ -225,7 +224,7 @@ export async function renderCertificateCanvas(
   ctx.stroke();
 
   ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
-  ctx.font = '500 12px "DM Sans", sans-serif';
+  ctx.font = '500 12px "Inter", sans-serif';
   ctx.textAlign = 'left';
   ctx.fillText(`Issued: ${opts.issuedDate}`, 80, 410);
 
@@ -244,7 +243,7 @@ export async function renderCertificateCanvas(
   ctx.stroke();
 
   ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
-  ctx.font = '500 11px "DM Sans", sans-serif';
+  ctx.font = '500 11px "Inter", sans-serif';
   ctx.textAlign = 'center';
   ctx.fillText('Programme Director', 170, 492);
   ctx.fillText('SBJ Academy', W - 170, 492);

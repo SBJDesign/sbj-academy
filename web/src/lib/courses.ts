@@ -16,6 +16,8 @@ export const catalog: CourseCatalogItem[] = [
     description:
       'Brand strategy, positioning, visual identity, storytelling, experience, and measuring equity.',
     icon: '🎨',
+    coverImage: '/photos/hero-main.png',
+    coverImageAlt: 'Professional learner ready to build their brand',
     modules: 10,
     quizCount: '100+',
     worksheets: 10,
@@ -29,6 +31,8 @@ export const catalog: CourseCatalogItem[] = [
     description:
       'A complete step-by-step guide — position, perception, performance, competitive intelligence, and brand health monitoring.',
     icon: '📊',
+    coverImage: '/photos/learner-laptop.png',
+    coverImageAlt: 'Learner analyzing brand data on a laptop',
     modules: 6,
     quizCount: '60+',
     worksheets: 6,
@@ -42,6 +46,8 @@ export const catalog: CourseCatalogItem[] = [
     description:
       'Present, pitch, and persuade — public speaking, writing, negotiation, and digital communication.',
     icon: '🎤',
+    coverImage: '/photos/student-focused.png',
+    coverImageAlt: 'Student focused on communication skills training',
     modules: 15,
     quizCount: '150+',
     worksheets: 15,

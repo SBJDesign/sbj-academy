@@ -37,6 +37,8 @@ export interface CourseCatalogItem {
   title: string;
   description: string;
   icon: string;
+  coverImage?: string;
+  coverImageAlt?: string;
   modules: number;
   quizCount: string;
   worksheets: number;
