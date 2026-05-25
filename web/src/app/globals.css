@@ -1,11 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
 @import "tailwindcss";
 
 :root {
   --teal: #36c9c2;
   --teal-hover: #2db5ae;
+  --coral: #ff6a6c;
   --navy: #14142e;
-  --bg: #f7fafb;
+  --bg: #f6f9fa;
   --surface: #ffffff;
   --surface-2: #eef6f6;
   --border: rgba(20, 20, 46, 0.1);
@@ -14,7 +15,7 @@
   --muted: #5c6b6b;
   --footer: #e8f0f0;
   --shadow-sm: 0 1px 3px rgba(20, 20, 46, 0.06);
-  --shadow-md: 0 8px 24px rgba(20, 20, 46, 0.08);
+  --shadow-md: 0 10px 32px rgba(20, 20, 46, 0.09);
   --callout-bg: rgba(45, 181, 174, 0.1);
   --callout-border: rgba(45, 181, 174, 0.35);
   --example-bg: #f0f9f8;
@@ -50,6 +51,7 @@
 
 @theme inline {
   --color-teal: var(--teal);
+  --color-coral: var(--coral);
   --color-navy: var(--navy);
   --color-bg: var(--bg);
   --color-surface: var(--surface);
@@ -59,8 +61,8 @@
   --color-text-body: var(--text-body);
   --color-muted: var(--muted);
   --color-footer: var(--footer);
-  --font-display: "Playfair Display", Georgia, serif;
-  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
 }
 
 html {
@@ -591,6 +593,28 @@ body {
   box-shadow: 0 1px 0 var(--border);
 }
 
+.stat-card {
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 0.85rem 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  border-color: rgba(54, 201, 194, 0.35);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-card .stat-num {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--teal);
+}
+
 .cert-preview-wrap {
   box-shadow:
     0 4px 24px rgba(54, 201, 194, 0.12),
@@ -643,4 +667,81 @@ body {
 .btn-outline:hover {
   border-color: rgba(54, 201, 194, 0.45);
   color: var(--teal);
+}
+
+/*
+ * Coral (#FF6A6C) — matches SBJ Studio "accent" token.
+ * Studio uses it for atmosphere (blurs/gradients) and small highlights, not headlines or CTAs.
+ * Academy: lesson video labels only.
+ */
+.course-lesson .yt-label {
+  color: var(--coral);
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Marketing photography */
+.photo-frame {
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  background: var(--surface-2);
+}
+
+.photo-frame::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(54, 201, 194, 0.12);
+}
+
+.photo-hero {
+  box-shadow:
+    0 20px 48px rgba(20, 20, 46, 0.12),
+    0 0 0 1px rgba(54, 201, 194, 0.15);
+}
+
+.photo-mosaic-item {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.photo-mosaic-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.65rem 0.85rem;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(to top, rgba(12, 12, 30, 0.85), transparent);
+}
+
+.photo-banner-overlay {
+  background: linear-gradient(
+    to top,
+    var(--bg) 0%,
+    rgba(246, 249, 250, 0.75) 35%,
+    rgba(246, 249, 250, 0.2) 100%
+  );
+}
+
+.dark .photo-banner-overlay {
+  background: linear-gradient(
+    to top,
+    var(--bg) 0%,
+    rgba(10, 10, 24, 0.8) 40%,
+    rgba(10, 10, 24, 0.25) 100%
+  );
+}
+
+.photo-cta {
+  box-shadow: var(--shadow-md);
 }

@@ -9,6 +9,10 @@ export const metadata: Metadata = {
   },
   description:
     'Free professional courses in branding, business communication, and more.',
+  icons: {
+    icon: [{ url: '/sbj-logo.png', type: 'image/png' }],
+    apple: [{ url: '/sbj-logo.png', type: 'image/png' }],
+  },
 };
 
 export default function RootLayout({
